@@ -40,7 +40,7 @@ To use the Factory Design Pattern, follow these steps:
 
 ## Example
 
-Consider a simple example of a Factory pattern that creates different types of shapes (e.g., Circle, Square, Triangle):
+Consider a simple example of a Factory pattern that creates different types of Banks (e.g., Banque Misr, Banque du Cairo):
 
 ```java
 // Abstract Bank Class
