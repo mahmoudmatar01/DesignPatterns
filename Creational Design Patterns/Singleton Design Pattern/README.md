@@ -39,7 +39,8 @@ To use the Singleton pattern in your project:
    ```java
    MySingleton instance = MySingleton.getInstance();
 
-##Thread Safety
+## Thread Safety
+
 To ensure thread safety, you can employ various techniques such as double-checked locking, synchronized blocks, or the Bill Pugh Singleton pattern. The choice of technique depends on your specific requirements and the version of Java you are using.   
 
 
