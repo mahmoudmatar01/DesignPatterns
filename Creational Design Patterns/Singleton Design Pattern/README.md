@@ -39,6 +39,67 @@ To use the Singleton pattern in your project:
    ```java
    MySingleton instance = MySingleton.getInstance();
 
+## Example
+
+Consider a simple example of a Singleton pattern for Counter Class:
+
+```java
+// Counter Class
+public class SingletonCounterClass {
+
+    // Singleton Pattern : Only create one instance of a class
+
+    public int count;
+    public void addOne(){
+        count++;
+    }
+
+    // create private constructor of this class and an instance
+
+    private SingletonCounterClass(){}
+    private static SingletonCounterClass Counter =null;
+
+    public static SingletonCounterClass getInstance(){
+
+        if(Counter==null){
+            // to support multi-threading ==> you can use double-checked locking or an alternative approach using synchronized blocks.
+            //The synchronized block is used to protect the critical section of code where the instance is created. Double-checked locking is an optimization that minimizes the overhead of synchronization after the first instance has been created.
+            synchronized (SingletonCounterClass.class) {
+                if (Counter == null) {
+                    Counter = new SingletonCounterClass();
+                }
+            }
+        }
+        return Counter;
+    }
+}
+
+
+// client implementation
+public class Main {
+    public static void main(String[] args) {
+
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
+
+        SingletonCounterClass counterOne = SingletonCounterClass.getInstance();
+        SingletonCounterClass counterTwo = SingletonCounterClass.getInstance();
+
+        counterOne.count=12;
+        System.out.println(counterOne.count); // 12
+        System.out.println(counterTwo.count); // 12
+
+        counterOne.addOne();
+        System.out.println(counterOne.count); // 13
+        System.out.println(counterTwo.count); // 13
+
+        counterTwo.count=2;
+        counterTwo.addOne();
+        System.out.println(counterOne.count); // 3
+        System.out.println(counterTwo.count); // 3
+    }
+}
+   
+
 ## Thread Safety
 
 To ensure thread safety, you can employ various techniques such as double-checked locking, synchronized blocks, or the Bill Pugh Singleton pattern. The choice of technique depends on your specific requirements and the version of Java you are using.   
