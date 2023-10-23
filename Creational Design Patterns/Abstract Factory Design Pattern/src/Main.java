@@ -1,3 +1,4 @@
+import exception.GlobalExceptionHandler;
 import factory.BankFactory;
 import factory.IBankFactory;
 import models.Bank;
@@ -8,9 +9,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
+
         // The Abstract Factory Design Pattern is a creational design pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It is an extension of the Factory Method pattern,
         // focusing on creating families of objects, ensuring that the created objects are compatible with each other.
-
 
         Scanner input=new Scanner(System.in);
         System.out.println("please, Enter your Card Number :");
