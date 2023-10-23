@@ -7,10 +7,10 @@ public class Main {
         // Build complex objects step by step
 
         Student student =  Student.builder()
-                .id(1)
-                .name("mahmoud mohamed matar")
-                .phone("+201128673348")
-                .gpa(3.1)
+                .setId(1)
+                .setName("mahmoud mohamed matar")
+                .setPhone("+201128673348")
+                .setGpa(3.1)
                 .build();
 
         System.out.println(student.getId());
