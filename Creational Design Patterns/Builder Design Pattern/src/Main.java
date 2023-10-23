@@ -6,7 +6,17 @@ public class Main {
         // or
         // Build complex objects step by step
 
+        Student student =  Student.builder()
+                .id(1)
+                .name("mahmoud mohamed matar")
+                .phone("+201128673348")
+                .gpa(3.1)
+                .build();
 
+        System.out.println(student.getId());
+        System.out.println(student.getStudentName());
+        System.out.println(student.getPhone());
+        System.out.println(student.getGpa());
 
     }
 }
