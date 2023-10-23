@@ -1,17 +1,27 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import factory.BankFactory;
+import factory.IBankFactory;
+import models.Bank;
+import models.Payment;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        // The Abstract Factory Design Pattern is a creational design pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It is an extension of the Factory Method pattern,
+        // focusing on creating families of objects, ensuring that the created objects are compatible with each other.
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+
+        Scanner input=new Scanner(System.in);
+        System.out.println("please, Enter your Card Number :");
+        String cardNumber=input.next();
+        String bankCode =cardNumber.substring(0,5);
+
+        IBankFactory bankFactory=new BankFactory();
+        Bank bank =bankFactory.getBank(bankCode); // if bankCode is start with 12345 => banque misr OrElse banque du cairo
+        Payment payment= bankFactory.getPaymentCard(cardNumber);
+        System.out.println(bank.withdraw());
+        System.out.println(payment.getProviderInfo()); // if card number end with 1 => visa company orElse Mastercard
+
     }
 }

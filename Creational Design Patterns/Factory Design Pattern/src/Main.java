@@ -22,7 +22,7 @@ public class Main {
         String bankCode =cardNumber.substring(0,5);
 
         IBankFactory bankFactory=new BankFactory();
-        Bank bank =bankFactory.getBank(bankCode); //bankCode is start with 12345 => banque misr OrElse banque du cairo 
+        Bank bank =bankFactory.getBank(bankCode); //bankCode is start with 12345 => banque misr OrElse banque du cairo
         System.out.println(bank.withdraw());
     }
 }
