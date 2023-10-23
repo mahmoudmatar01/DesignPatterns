@@ -1,17 +1,28 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import exception.GlobalExceptionHandler;
+import factory.BankFactory;
+import factory.IBankFactory;
+import models.Bank;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalExceptionHandler());
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        // Factory Design Pattern :- Define an interface for creating an object,
+        //                           but let subclasses decide which class to instantiate
+        // or
+        // Create object without exposing the creation logic to the client
+        // and refer to newly created object using a common interface
+
+        Scanner input=new Scanner(System.in);
+        System.out.println("please, Enter your Card Number :");
+        String cardNumber=input.next();
+        String bankCode =cardNumber.substring(0,5);
+
+        IBankFactory bankFactory=new BankFactory();
+        Bank bank =bankFactory.getBank(bankCode); //bankCode is start with 12345 => banque misr OrElse banque du cairo 
+        System.out.println(bank.withdraw());
     }
 }
