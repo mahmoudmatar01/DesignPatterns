@@ -32,7 +32,68 @@ Provide instructions on how to use the Proxy Design Pattern in your code. Explai
 ```[Include code examples or usage instructions here]```
 
 ## Examples
+```java
+public interface InternetServices {
+    String serviceSite(String url);
+}
 
+public class Etisalat implements InternetServices {
+
+    private int browsingSpeed=10;
+
+    @Override
+    public String serviceSite(String url) {
+        return String.format("https://%s.com",url);
+    }
+
+    public int getBrowsingSpeed() {
+        return browsingSpeed;
+    }
+
+    public void setBrowsingSpeed(int browsingSpeed) {
+        this.browsingSpeed = browsingSpeed;
+    }
+}
+
+import java.util.Arrays;
+import java.util.List;
+
+public class InternetServicesProxy implements InternetServices{
+
+    List<String> blockedSites= Arrays.asList(
+      "porno","facebook","twitter","instagram"
+    );
+
+    @Override
+    public String serviceSite(String url) {
+        if(blockedSites.contains(url)){
+            return "this site is blocked, return to work!!!!";
+        }
+        return new Etisalat().serviceSite(url);
+    }
+
+    public void login(String url){
+        System.out.printf("[%d] %s %n ",System.currentTimeMillis(),url);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<String> sites= Arrays.asList(
+                "youtube",
+                "linkedin",
+                "porno",
+                "udemy",
+                "facebook",
+                "instagram"
+        );
+        InternetServices internet =new InternetServicesProxy();
+        for (String site:sites){
+            System.out.println(internet.serviceSite(site));
+        }
+    }
+}
 
 
 
