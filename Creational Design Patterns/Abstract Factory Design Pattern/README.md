@@ -42,7 +42,7 @@ To use the Abstract Factory Design Pattern, follow these steps:
 
 ## Example
 
-Consider a simple example of an Abstract Factory pattern that creates different types of furniture (e.g., Modern Furniture and Victorian Furniture):
+Consider a simple example of an Abstract Factory pattern that creates different types of Banks and Payment Methods 
 
 ```java
 // Abstract Bank Factory
