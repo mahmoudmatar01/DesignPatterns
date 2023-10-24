@@ -25,9 +25,6 @@ The Adapter Design Pattern involves the following components:
 - **Adapter**: A class that implements the target interface and wraps the Adaptee to make it compatible with the client code.
 - **Client**: The code that relies on the Target Interface.
 
-Here is a simplified UML class diagram to illustrate the structure:
-
-![Adapter Design Pattern UML](adapter-pattern-uml.png)
 
 ### Example
 
