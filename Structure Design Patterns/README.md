@@ -20,4 +20,9 @@ Structural design patterns provide solutions for creating relationships between 
 - **Flyweight Pattern**: Minimizes memory usage or computational expenses by sharing as much as possible with similar objects.
 
 - **Facade Pattern**: Provides a unified interface to a set of interfaces in a subsystem.
+  
+- **Bridge Pattern**: It's a pattern that focuses on decoupling an abstraction from its implementation so that the two can vary independently.
+  
+- **Composite Pattern**: It falls under the category of structural patterns because it deals with the composition of objects to form larger structures, while treating individual objects and compositions of objects uniformly.
+
 
