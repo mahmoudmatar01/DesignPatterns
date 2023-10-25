@@ -30,7 +30,7 @@ The Adapter Design Pattern involves the following components:
 
 In this example, we'll create an Adapter for converting Bicycle Vehicle to Car Vehicle.
 
-```python
+```java
 # Target Interface
 public interface Vehicle {
 
