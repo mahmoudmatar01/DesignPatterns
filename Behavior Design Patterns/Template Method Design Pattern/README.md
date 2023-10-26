@@ -25,11 +25,7 @@ This pattern is particularly beneficial when you have a common algorithm structu
 
 ## Getting Started
 
-To get started with this repository, you can clone it to your local machine:
-
-```shell
-git clone https://github.com/yourusername/template-method-java.git
-```
+To get started with this repository, you can clone it to your local machine
 
 ## Examples
 
