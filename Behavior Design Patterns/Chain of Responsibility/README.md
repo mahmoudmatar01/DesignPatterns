@@ -25,11 +25,7 @@ This pattern allows you to dynamically configure the chain and add or remove han
 
 ## Getting Started
 
-To get started with this repository, you can clone it to your local machine:
-
-```shell
-git clone https://github.com/yourusername/chain-of-responsibility-java.git
-```
+To get started with this repository, you can clone it to your local machine
 
 ## Examples
 
