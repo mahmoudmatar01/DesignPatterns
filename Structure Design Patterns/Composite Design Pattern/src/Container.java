@@ -9,6 +9,13 @@ public class Container extends Component{
     }
 
     public void printChildren(){
-        children.stream().forEach(component -> System.out.println(component.title));
+
+        children.stream().forEach(component -> {
+            if(component instanceof Container){
+                ((Container) component).children.stream().forEach(component1 -> System.out.println(component1.title));
+            } else{
+                System.out.println(component.title);
+            }
+        });
     }
 }
