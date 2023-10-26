@@ -8,8 +8,7 @@ This repository contains Java code examples and explanations for the Chain of Re
 - [Pattern Overview](#pattern-overview)
 - [Getting Started](#getting-started)
 - [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
@@ -30,3 +29,81 @@ To get started with this repository, you can clone it to your local machine:
 
 ```shell
 git clone https://github.com/yourusername/chain-of-responsibility-java.git
+```
+
+## Examples
+
+```java
+// Base Handler
+public abstract class Handler {
+    public Handler successor=null;
+    public void setSuccessor(Handler successor) {
+        this.successor = successor;
+    }
+    public abstract void handleRequest(Request request);
+}
+
+// concretes
+public class CEO extends Handler{
+    @Override
+    public void handleRequest(Request request) {
+        System.out.println("CEO can approve anything");
+    }
+}
+public class Director extends Handler{
+    @Override
+    public void handleRequest(Request request) {
+        if(request.requestType()==RequestType.CONFERENCE){
+            System.out.println("Director can approve conference");
+        }else{
+            successor.handleRequest(request);
+        }
+    }
+}
+public class VP extends Handler{
+    @Override
+    public void handleRequest(Request request) {
+        if(request.requestType()==RequestType.PURCHASE){
+            if(request.amount()<1500){
+                System.out.println("Vp can approve budget <1500 ");
+            }else{
+                successor.handleRequest(request);
+            }
+        }
+    }
+}
+
+// some class
+public enum RequestType {
+    CONFERENCE,
+    PURCHASE
+}
+
+public record Request(
+        RequestType requestType,
+        double amount
+) {
+}
+
+//client
+public class Main {
+    public static void main(String[] args) {
+
+        var bryan=new Director();
+        var crystal=new VP();
+        var jeff=new CEO();
+
+        bryan.setSuccessor(crystal);
+        crystal.setSuccessor(jeff);
+
+        var request =new Request(RequestType.CONFERENCE,500.0);
+        bryan.handleRequest(request);
+
+        request =new Request(RequestType.PURCHASE,1000.0);
+        bryan.handleRequest(request);
+
+        request =new Request(RequestType.PURCHASE,2000.0);
+        bryan.handleRequest(request);
+
+    }
+}
